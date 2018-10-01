@@ -100,10 +100,7 @@ mod tests {
     }
     #[test]
     fn test_reverse_each_line_1() {
-        assert_eq!(
-            reverse_each_line("rust_handson2_exercises\nbar\n"),
-            "oof\nrab\n"
-        );
+        assert_eq!(reverse_each_line("foo\nbar\n"), "oof\nrab\n");
     }
     #[test]
     fn test_reverse_each_line_2() {
