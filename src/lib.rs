@@ -50,38 +50,8 @@ pub fn comma_sum(_line: &str) -> Result<i32, ParseIntError> {
 /// ```rust
 /// assert_eq!(base64(b"hoge"), "aG9nZQ=");
 /// ```
-pub fn base64(data: &[u8]) -> String {
-    let chunks = data.chunks(3);
-    let mut s = String::with_capacity(chunks.len() * 4);
-    for chunk in chunks {
-        let a = b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-        let b64chunk = if chunk.len() >= 3 {
-            [
-                a[chunk[0] as usize >> 2],
-                a[((chunk[0] as usize & 3) << 4) | (chunk[1] as usize >> 4)],
-                a[((chunk[1] as usize & 15) << 2) | (chunk[2] as usize >> 6)],
-                a[chunk[2] as usize & 63],
-            ]
-        } else if chunk.len() == 2 {
-            [
-                a[chunk[0] as usize >> 2],
-                a[((chunk[0] as usize & 3) << 4) | (chunk[1] as usize >> 4)],
-                a[(chunk[1] as usize & 15) << 2],
-                b'=',
-            ]
-        } else if chunk.len() == 1 {
-            [
-                a[chunk[0] as usize >> 2],
-                a[(chunk[0] as usize & 3) << 4],
-                b'=',
-                b'=',
-            ]
-        } else {
-            unreachable!()
-        };
-        s.push_str(unsafe { str::from_utf8_unchecked(&b64chunk) });
-    }
-    s
+pub fn base64(_data: &[u8]) -> String {
+    unimplemented!();
 }
 
 #[cfg(test)]
