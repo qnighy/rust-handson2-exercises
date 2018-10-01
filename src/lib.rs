@@ -116,4 +116,23 @@ mod tests {
             "321\ngfedcba\n0123456789\n"
         );
     }
+    #[test]
+    fn test_base64_1() {
+        assert_eq!(base64(b"hoge"), "aG9nZQ==");
+    }
+    #[test]
+    fn test_base64_2() {
+        assert_eq!(
+            base64("いろはにほへと".as_bytes()),
+            "44GE44KN44Gv44Gr44G744G444Go"
+        );
+    }
+    #[test]
+    fn test_base64_3() {
+        assert_eq!(base64(b"aG9nZQ=="), "YUc5blpRPT0=");
+    }
+    #[test]
+    fn test_base64_4() {
+        assert_eq!(base64(b""), "");
+    }
 }
